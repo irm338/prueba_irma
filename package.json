@@ -1,5 +1,17 @@
 {
+  "name": "prueba-irma",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API REST para gestionar postulaciones laborales con Express y MySQL",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test",
+    "check": "node --check src/index.js && node --check src/app.js && node --check src/config/db.js && node --check src/controllers/application.controller.js && node --check src/errors/app-error.js && node --check src/middleware/validation.middleware.js && node --check src/repositories/application.repository.js && node --check src/routes/application.routes.js && node --check src/services/application.service.js && node --check test/application.routes.test.js && node --check test/application.service.test.js"
+  },
   "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "mysql2": "^3.24.5"
   }
 }

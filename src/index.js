@@ -1,19 +1,10 @@
+// Carga la configuración local antes de importar módulos que consultan el entorno.
+require('dotenv').config();
+const { createApp } = require('./app');
 
-// src/index.js
-const express = require('express');
-require('dotenv').config(); // Carga las variables de entorno desde el archivo .env
-
-const app = express();
-
-// Middleware para que Express sepa interpretar JSON en las peticiones HTTP
-app.use(express.json());
-
-// Importar y montar las rutas de la API
-const applicationRoutes = require('./routeres/application.routeres');
-app.use('/applications', applicationRoutes);
-
-// Definir el puerto y poner a escuchar el servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo exitosamente en el puerto ${PORT}`);
+// Inicia el servidor HTTP; las consultas SQL se conectan solo al atender operaciones de datos.
+const port = Number(process.env.PORT || 3000);
+const app = createApp();
+app.listen(port, () => {
+    console.log(`Servidor iniciado en el puerto ${port}.`);
 });
